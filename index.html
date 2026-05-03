@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>무래씨 — 포항의 바다를 한 컵에 | Pohang Mulhoe</title>
+  <meta name="description" content="포항 영일대 설머리 횟집과 한동대학교가 함께 만드는 컵물회. 9,000원에 담긴 다섯 가지 디테일." />
+  <meta name="keywords" content="무래씨, 포항 컵물회, 영일대, 설머리 횟집, 포항 물회, Pohang Mulhoe" />
+  <meta name="theme-color" content="#0A0B0E" />
+  <link rel="icon" type="image/png" href="./images/murae-front.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="무래씨 — 포항의 바다를 한 컵에" />
+  <meta property="og:description" content="포항 영일대 설머리 횟집과 한동대학교가 함께 만드는 컵물회. 9,000원에 담긴 다섯 가지 디테일." />
+  <meta property="og:image" content="./images/02-cup-finished.png" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:site_name" content="무래씨" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="무래씨 — 포항의 바다를 한 컵에" />
+  <meta name="twitter:description" content="포항 영일대 설머리 횟집과 한동대학교가 함께 만드는 컵물회." />
+  <meta name="twitter:image" content="./images/02-cup-finished.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --red:        #E5283F;
+      --red-deep:   #A81B2E;
+      --red-glow:   #FF3B5C;
+      --cream:      #FBF6EC;
+      --ink:        #0A0B0E;
+      --charcoal:   #0F1115;
+      --ocean:      #2B5876;
+      --ocean-deep: #0E2536;
+      --sunset:     #FF6B47;
+      --text-2:     rgba(255,255,255,0.72);
+      --text-mute:  rgba(255,255,255,0.5);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+      background: var(--ink); color: #fff;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    .font-serif-kr { font-family: 'Noto Serif KR', serif; }
+    .font-corm     { font-family: 'Cormorant Garamond', serif; }
+
+    .t-mega    { font-size: clamp(56px, 11vw, 160px); line-height: 0.94; letter-spacing: -0.04em; font-weight: 700; }
+    .t-display { font-size: clamp(40px, 7vw, 96px);   line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
+    .t-h1      { font-size: clamp(30px, 4.8vw, 60px); line-height: 1.12; letter-spacing: -0.01em; font-weight: 700; }
+    .t-h2      { font-size: clamp(22px, 2.8vw, 34px); line-height: 1.3;  font-weight: 600; }
+    .t-h3      { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.4;  font-weight: 600; }
+    .t-body    { font-size: clamp(15px, 1.1vw, 17px); line-height: 1.65; }
+    .t-body-lg { font-size: clamp(16px, 1.2vw, 18px); line-height: 1.65; }
+    .t-cap     { font-size: 13px; line-height: 1.5; letter-spacing: 0.02em; }
+    .t-mic     { font-size: 11px; line-height: 1.4;  letter-spacing: 0.18em; }
+
+    .eyebrow { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red-glow); }
+    .eyebrow-light { color: rgba(255,255,255,0.65); }
+
+    .text-red       { color: var(--red); }
+    .text-red-glow  { color: var(--red-glow); }
+    .text-cream     { color: var(--cream); }
+    .text-2         { color: var(--text-2); }
+    .text-mute      { color: var(--text-mute); }
+    .bg-ink         { background: var(--ink); }
+    .bg-charcoal    { background: var(--charcoal); }
+    .bg-red         { background: var(--red); }
+
+    .section-pad { padding-top: clamp(80px, 12vw, 160px); padding-bottom: clamp(80px, 12vw, 160px); }
+    .container-x { max-width: 1320px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+    @media (min-width: 1024px) { .container-x { padding-left: 56px; padding-right: 56px; } }
+
+    .asset-slot {
+      position: relative; overflow: hidden;
+      background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 14px, rgba(255,255,255,0.08) 14px, rgba(255,255,255,0.08) 28px);
+      border: 2px dashed rgba(255,255,255,0.25);
+      border-radius: 4px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.55); text-align: center;
+      padding: 20px; min-height: 120px;
+    }
+    .asset-slot.with-image { background: none; border: none; padding: 0; }
+    .asset-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .asset-tag {
+      position: absolute; top: 10px; left: 10px;
+      padding: 5px 11px; border-radius: 6px;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4); z-index: 5;
+    }
+    .asset-tag-todo { background: var(--red); color: white; }
+    .asset-tag-done { background: #16a34a; color: white; }
+    .asset-desc { font-size: 13px; font-weight: 500; margin-top: 8px; max-width: 80%; }
+    .asset-icon { width: 32px; height: 32px; opacity: 0.5; }
+
+    .bg-sim-ocean    { background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.18), transparent 50%), linear-gradient(180deg, #4A8AB5 0%, #2B5876 40%, #0E2536 90%); }
+    .bg-sim-sunset   { background: radial-gradient(ellipse at 50% 70%, #FFB347 0%, #FF6B47 30%, #E5283F 60%, #2B0F1A 100%); }
+    .bg-sim-darkroom { background: radial-gradient(ellipse at 50% 30%, rgba(229,40,63,0.3) 0%, transparent 50%), linear-gradient(180deg, #1A0808 0%, #0A0B0E 100%); }
+    .bg-sim-flatlay  { background: radial-gradient(ellipse at 50% 50%, #2A2018 0%, #0F0A06 100%); }
+
+    @keyframes ken-burns      { from {transform: scale(1) translate(0,0)} to {transform: scale(1.12) translate(-1%,-1%)} }
+    .ken-burns                { animation: ken-burns 28s ease-in-out infinite alternate; }
+    @keyframes bounce-soft    { 0%,100%{transform:translateY(0); opacity:.55} 50%{transform:translateY(8px); opacity:1} }
+    .bounce-soft              { animation: bounce-soft 2.4s ease-in-out infinite; }
+    @keyframes float-slow     { 0%,100%{transform:translateY(0) rotate(-3deg)} 50%{transform:translateY(-10px) rotate(3deg)} }
+    .float-slow               { animation: float-slow 4s ease-in-out infinite; }
+    @keyframes spark          { 0%{opacity:0; transform:scale(0)} 50%{opacity:1} 100%{opacity:0; transform:scale(1.5) rotate(180deg)} }
+    .spark                    { animation: spark 1.6s ease-out infinite; }
+    @keyframes shine          { 0%{transform:translateX(-100%)} 50%,100%{transform:translateX(200%)} }
+    .shine-overlay::after     { content:""; position:absolute; inset:0; background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.15) 50%,transparent 70%); animation: shine 6s ease-in-out infinite; pointer-events: none; }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Cup story */
+    .cup-story-wrap { position: relative; height: 600vh; }
+    .cup-story-pin  { position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; }
+
+    /* Cup stage images — stacked, crossfaded (transparent PNG, no blend trick needed) */
+    .cup-stage {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 40px 90px rgba(0,0,0,0.7)) drop-shadow(0 0 60px rgba(255,59,92,0.22));
+      transition: opacity 0.7s ease;
+      will-change: opacity;
+    }
+
+    /* Stage 3 sauce fill — clip-path driven liquid rise */
+    .cup-story-pin { --sauce-fill: 100%; }
+    #cupStage3 {
+      clip-path: inset(var(--sauce-fill) 0 0 0);
+      -webkit-clip-path: inset(var(--sauce-fill) 0 0 0);
+    }
+    /* Soft red highlight following the rising sauce surface */
+    .liquid-surface {
+      position: absolute;
+      left: 18%; right: 18%;
+      top: var(--sauce-fill, 100%);
+      height: 14px;
+      transform: translateY(-7px);
+      pointer-events: none;
+      opacity: 0;
+      z-index: 3;
+      background: radial-gradient(ellipse at center,
+        rgba(255,110,130,0.85) 0%,
+        rgba(220,40,60,0.45) 45%,
+        transparent 100%);
+      filter: blur(3px);
+      transition: opacity 0.4s ease;
+    }
+    @keyframes liquid-shimmer { 0%,100%{ transform: translateY(-7px) scaleX(1); } 50%{ transform: translateY(-9px) scaleX(0.96); } }
+    .liquid-surface.active { animation: liquid-shimmer 1.6s ease-in-out infinite; }
+
+    /* Side ingredient images (transparent PNG) */
+    .ing-img {
+      width: 100%; height: 100%; object-fit: contain;
+      filter: drop-shadow(0 14px 36px rgba(0,0,0,0.6));
+    }
+
+    /* Buttons */
+    .btn-red {
+      background: var(--red); color: #fff; padding: 17px 30px; border-radius: 999px;
+      font-weight: 700; font-size: 16px; transition: all .3s ease;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      border: none; cursor: pointer;
+    }
+    .btn-red:hover { background: var(--red-deep); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(229,40,63,.45); }
+    .btn-glass {
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(20px);
+      color: #fff; padding: 17px 30px; border-radius: 999px;
+      font-weight: 600; font-size: 16px; border: 1px solid rgba(255,255,255,0.25);
+      transition: all .3s ease; cursor: pointer;
+    }
+    .btn-glass:hover { background: rgba(255,255,255,0.18); }
+
+    .input-glass {
+      width: 100%; padding: 16px 20px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      font-size: 15px; color: #fff; font-family: inherit; transition: all .2s;
+    }
+    .input-glass::placeholder { color: rgba(255,255,255,0.4); }
+    .input-glass:focus { outline: none; border-color: var(--red-glow); background: rgba(255,255,255,0.12); }
+
+    .glass-card {
+      background: rgba(15,17,21,0.55);
+      backdrop-filter: blur(28px) saturate(150%); -webkit-backdrop-filter: blur(28px) saturate(150%);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+    }
+    .glass-card-light {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 4px;
+    }
+
+    .bg-wordmark {
+      position: absolute; pointer-events: none; user-select: none;
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500;
+      white-space: nowrap; line-height: 0.85; letter-spacing: -0.04em;
+    }
+
+    .stage-num-bg {
+      position: absolute; pointer-events: none;
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-weight: 500; line-height: 1;
+      font-size: clamp(220px, 38vw, 540px);
+      color: rgba(255,59,92, 0.10);
+      letter-spacing: -0.05em;
+    }
+
+    .proto-banner {
+      position: fixed; bottom: 20px; right: 20px;
+      background: rgba(255,255,255,0.95); color: var(--ink);
+      padding: 11px 18px; border-radius: 999px;
+      font-size: 13px; font-weight: 700;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      z-index: 1000; display: flex; align-items: center; gap: 12px; cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+    .proto-banner span { background: var(--red); color: #fff; padding: 3px 9px; border-radius: 999px; font-size: 11px; }
+
+    /* === Back-to-top button === */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px; left: 24px;
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: rgba(15,17,21,0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+      opacity: 0; transform: translateY(12px); pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease,
+                  background 0.25s ease, border-color 0.25s ease;
+      z-index: 950;
+    }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .back-to-top:hover {
+      background: rgba(229,40,63,0.85);
+      border-color: rgba(255,59,92,0.7);
+      transform: translateY(-2px);
+    }
+    .back-to-top svg { display: block; }
+    @media (max-width: 768px) {
+      .back-to-top { bottom: 18px; left: 18px; width: 42px; height: 42px; }
+    }
+
+    /* === Floating section nav === */
+    .floating-nav {
+      position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
+      z-index: 900; display: flex; flex-direction: column; gap: 14px;
+      align-items: flex-end;
+    }
+    @media (max-width: 768px) { .floating-nav { display: none; } }
+    .nav-dot {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; cursor: pointer;
+      position: relative;
+    }
+    .nav-dot::before {
+      content: attr(data-label);
+      font-family: 'Pretendard Variable', Pretendard, sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.92);
+      background: rgba(15,17,21,0.78); backdrop-filter: blur(10px);
+      padding: 5px 12px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      opacity: 0; transform: translateX(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none; white-space: nowrap;
+    }
+    .nav-dot:hover::before { opacity: 1; transform: translateX(0); }
+    .nav-dot-circle {
+      width: 11px; height: 11px; border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: 1.5px solid rgba(255,255,255,0.55);
+      transition: all 0.3s ease;
+    }
+    .nav-dot:hover .nav-dot-circle {
+      background: rgba(255,59,92,0.6);
+      border-color: var(--red-glow);
+      transform: scale(1.2);
+    }
+    .nav-dot.active .nav-dot-circle {
+      background: var(--red-glow);
+      border-color: var(--red-glow);
+      transform: scale(1.4);
+      box-shadow: 0 0 12px rgba(255,59,92,0.55);
+    }
+
+    /* === Lifestyle font (modern Korean — Pretendard 700) === */
+    .lifestyle-display {
+      font-family: 'Pretendard Variable', Pretendard, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .annot-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 4px; padding: 18px 22px;
+      transition: all .3s ease;
+    }
+    .annot-card:hover { background: rgba(255,255,255,0.12); transform: translateX(6px); border-color: rgba(255,59,92,0.35); }
+    .annot-card .num   { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: var(--red-glow); display: block; margin-bottom: 4px; letter-spacing: 0.06em; }
+    .annot-card .label { color: #fff; font-weight: 600; font-size: 16px; margin-bottom: 4px; display: block; }
+    .annot-card .desc  { color: rgba(255,255,255,0.65); font-size: 13px; }
+
+    .spark-dot { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #fff; opacity: 0; box-shadow: 0 0 12px #fff; }
+
+    .ls-card {
+      position: relative; overflow: hidden; border-radius: 4px;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+      transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
+    }
+    .ls-card:hover { transform: scale(1.02); }
+    .ls-card .overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 0%, transparent 40%, rgba(10,11,14,0.85) 100%);
+      transition: opacity 0.4s;
+    }
+    .ls-card .ls-content {
+      position: absolute; inset: 0; padding: 28px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      color: #fff;
+    }
+    .ls-card .ls-num {
+      position: absolute; top: 24px; left: 24px;
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 22px; color: var(--red-glow); letter-spacing: 0.06em;
+      z-index: 3;
+    }
+    @media (min-width: 1024px) { .ls-card { aspect-ratio: 3/4.5; } }
+  </style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- SECTION 1 — HERO (full bleed VIDEO)           -->
+<!-- ============================================ -->
+<section id="hero" class="relative overflow-hidden" style="min-height: 100vh; background: var(--ocean-deep);">
+  <!-- Hero video full bleed -->
+  <div class="absolute inset-0" style="z-index: 0; overflow: hidden;">
+    <video autoplay muted loop playsinline preload="auto"
+           style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"
+           poster="./images/01-yeongildae-ocean.png">
+      <source src="./images/hero-ocean.mp4" type="video/mp4">
+    </video>
+    <!-- Image fallback if video fails -->
+    <img src="./images/01-yeongildae-ocean.png" alt="포항 영일대" class="ken-burns"
+         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-1;"/>
+  </div>
+
+  <!-- Overlay gradients -->
+  <div class="absolute inset-0 pointer-events-none" style="z-index: 1; background: linear-gradient(180deg, rgba(10,11,14,0.65) 0%, rgba(10,11,14,0.1) 35%, rgba(10,11,14,0.45) 75%, rgba(10,11,14,0.95) 100%);"></div>
+  <div class="absolute inset-0 pointer-events-none" style="z-index: 1; background: radial-gradient(ellipse at 30% 50%, transparent 0%, rgba(229,40,63,0.12) 50%, transparent 100%);"></div>
+
+  <div class="bg-wordmark" style="bottom: 6%; left: -2%; font-size: clamp(80px, 14vw, 200px); color: rgba(255,255,255,0.06); z-index: 2;">
+    Pohang Mulhoe
+  </div>
+
+  <!-- Top bar -->
+  <div class="absolute top-0 left-0 right-0 px-6 lg:px-14 py-7 flex justify-between items-center" style="z-index: 5;">
+    <div class="flex items-center gap-3 text-cream">
+      <img src="./images/murae-front.png" alt="무래씨"
+           style="width: 64px; height: 64px; object-fit: contain;
+                  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));"/>
+      <span style="font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.04em; text-shadow: 0 2px 12px rgba(0,0,0,0.45);">무래씨</span>
+    </div>
+    <div class="hidden md:flex items-center gap-5">
+      <span class="t-mic eyebrow-light">— EST. 2026 · POHANG</span>
+      <a href="https://www.instagram.com/mulhwe_/" target="_blank" rel="noopener noreferrer"
+         class="flex items-center gap-2 text-cream"
+         style="padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.22);
+                background: rgba(255,255,255,0.06); backdrop-filter: blur(10px);
+                font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+                transition: all 0.25s ease; text-decoration: none;"
+         onmouseover="this.style.background='rgba(255,59,92,0.18)'; this.style.borderColor='rgba(255,59,92,0.6)';"
+         onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.22)';">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+        </svg>
+        <span>@mulhwe_</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="relative h-screen flex flex-col justify-center px-6 lg:px-14" style="z-index: 3;">
+    <div class="container-x w-full flex flex-col" style="gap: clamp(28px, 4.5vh, 52px);">
+      <!-- TOP ROW: cup LEFT / heritage text RIGHT -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <!-- LEFT: cup image (offset down ~50px) -->
+        <div class="flex justify-center lg:justify-start items-center order-2 lg:order-1">
+          <img src="./images/02-cup-finished.png" alt="컵물회"
+               class="float-slow"
+               style="width: 100%; max-width: clamp(304px, 41.4vw, 580px); height: auto; object-fit: contain;
+                      margin-top: clamp(30px, 6vh, 60px);
+                      filter: drop-shadow(0 50px 100px rgba(0,0,0,0.55)) drop-shadow(0 0 100px rgba(255,59,92,0.28));
+                      transform-origin: center;"/>
+        </div>
+
+        <!-- RIGHT: heritage text (4 lines) -->
+        <div class="text-left order-1 lg:order-2">
+          <p class="eyebrow t-mic mb-6 text-cream" style="opacity: 0.85;">— 00 / INTRO  ·  A NEW CUP FROM POHANG SEA</p>
+          <h1 class="font-serif-kr text-cream" style="font-size: clamp(22px, 3.7vw, 46px); line-height: 1.28; letter-spacing: -0.015em; font-weight: 700; word-break: keep-all; text-shadow: 0 2px 30px rgba(0,0,0,0.5);">
+            고된 어부들의 한 끼를 책임지던 물회가,<br/>
+            포항의 바다를 한 컵에 담은<br/>
+            가장 <span class="font-corm italic font-medium" style="color: var(--red-glow); font-weight: 500;">특별한 한 잔</span>으로.
+          </h1>
+        </div>
+      </div>
+
+      <!-- BOTTOM: centered sub-copy + CTA -->
+      <div class="text-center">
+        <p class="t-body-lg mb-7 text-cream" style="max-width: 560px; margin-left: auto; margin-right: auto; opacity: 0.85;">
+          설머리 횟집과 한동대 학생들이 함께 만드는<br class="hidden md:block"/>
+          포항의 새로운 한 컵.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="#cupStory" class="btn-red">한 컵의 이야기 보기 →</a>
+          <a href="#location" class="btn-glass">설머리 위치</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom data strip -->
+  <div class="absolute bottom-8 left-0 right-0 flex justify-between items-end px-6 lg:px-14" style="z-index: 4;">
+    <div class="hidden md:flex items-center gap-8 text-cream" style="opacity: 0.7;">
+      <div>
+        <p class="t-mic eyebrow-light mb-1">VOLUME</p>
+        <p class="font-corm italic" style="font-size: 18px;">510 ml</p>
+      </div>
+      <div>
+        <p class="t-mic eyebrow-light mb-1">PRICE</p>
+        <p class="font-corm italic" style="font-size: 18px;">9,000 ₩</p>
+      </div>
+      <div>
+        <p class="t-mic eyebrow-light mb-1">EDITION</p>
+        <p class="font-corm italic" style="font-size: 18px;">No.0001 — 0500</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center bounce-soft text-cream" style="opacity: 0.7;">
+      <span class="t-mic font-corm italic mb-2" style="letter-spacing: 0.2em;">scroll</span>
+      <svg width="20" height="32" viewBox="0 0 24 40" fill="none">
+        <rect x="2" y="2" width="20" height="36" rx="10" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="12" cy="14" r="3" fill="currentColor"/>
+      </svg>
+    </div>
+
+    <div class="hidden md:block" style="width: 240px;"></div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 2 — CUP STORY (real photo crossfade)  -->
+<!-- ============================================ -->
+<section class="cup-story-wrap" id="cupStory">
+  <div class="cup-story-pin" style="background: #0A0B0E;">
+
+    <!-- bg-ocean photo backdrop -->
+    <img src="./images/bg-ocean.png" alt=""
+         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index: 0;
+                filter: blur(2px) brightness(0.7) saturate(1.15);"/>
+
+    <!-- Stage-specific color overlay (animated per stage) -->
+    <div class="absolute inset-0" id="bgOverlay" style="z-index: 1; transition: background 1.2s ease;
+         background: linear-gradient(180deg, rgba(10,30,44,0.88) 0%, rgba(10,11,14,0.92) 100%);"></div>
+
+    <!-- Massive stage number behind -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none" style="z-index: 2;">
+      <div class="stage-num-bg" id="stageNumBg">01</div>
+    </div>
+
+    <!-- Top eyebrow -->
+    <div class="absolute top-12 left-0 right-0 text-center" style="z-index: 4;">
+      <p class="eyebrow t-mic" style="color: var(--red-glow); opacity: 0.9;">— 01 / STORY</p>
+    </div>
+
+    <!-- Stage number caption -->
+    <div class="absolute top-24 left-0 right-0 px-8 text-center" style="z-index: 4;">
+      <p class="font-corm italic" id="stageNumber" style="color: var(--red-glow); font-size: 14px; letter-spacing: 0.18em; font-weight: 500;">STAGE 01 / 05</p>
+    </div>
+
+    <!-- Caption bottom -->
+    <div class="absolute bottom-28 left-0 right-0 px-8 text-center" style="z-index: 4;">
+      <h2 class="lifestyle-display text-cream" id="stageText" style="font-size: clamp(22px, 3vw, 38px); line-height: 1.35; max-width: 760px; margin: 0 auto; font-weight: 600; text-shadow: 0 2px 24px rgba(0,0,0,0.6);">비어있는 한 컵, 시작은 여기서부터.</h2>
+    </div>
+
+    <!-- LEFT side ingredient -->
+    <div class="absolute top-1/2 left-4 md:left-12 -translate-y-1/2" style="z-index: 3;">
+      <div class="relative" style="width: clamp(160px, 22vw, 320px); height: clamp(160px, 22vw, 320px); opacity: 0;" id="leftAsset">
+        <img id="leftIngImg" class="ing-img" src="./images/ing-pear.png" alt=""/>
+      </div>
+    </div>
+
+    <!-- RIGHT side ingredient -->
+    <div class="absolute top-1/2 right-4 md:right-12 -translate-y-1/2" style="z-index: 3;">
+      <div class="relative" style="width: clamp(160px, 22vw, 320px); height: clamp(160px, 22vw, 320px); opacity: 0;" id="rightAsset">
+        <img id="rightIngImg" class="ing-img" src="./images/ing-cucumber.png" alt=""/>
+      </div>
+    </div>
+
+    <!-- THE CUP — stacked photos, crossfading -->
+    <div class="absolute inset-0 flex items-center justify-center" style="z-index: 3;">
+      <div class="relative" style="width: clamp(320px, 42vw, 560px); aspect-ratio: 3/4;">
+
+        <!-- Glow halo -->
+        <div class="absolute inset-0 rounded-full" id="cupGlow" style="background: radial-gradient(circle at center, transparent 0%, transparent 70%); transition: all 0.8s ease; transform: scale(1.6); pointer-events: none; z-index: 0;"></div>
+
+        <!-- Steam (visible at stage 5) -->
+        <div class="absolute" style="left: 50%; top: -110px; transform: translateX(-50%); pointer-events: none; opacity: 0; z-index: 4;" id="steamGroup">
+          <svg width="240" height="170" viewBox="0 0 240 170" style="filter: blur(2px);">
+            <ellipse class="spark" cx="60"  cy="130" rx="22" ry="14" fill="#fff" opacity="0.5" style="animation-delay: 0s;"/>
+            <ellipse class="spark" cx="120" cy="135" rx="30" ry="20" fill="#fff" opacity="0.6" style="animation-delay: 0.4s;"/>
+            <ellipse class="spark" cx="180" cy="125" rx="22" ry="14" fill="#fff" opacity="0.5" style="animation-delay: 0.8s;"/>
+            <ellipse class="spark" cx="100" cy="115" rx="14" ry="10" fill="#fff" opacity="0.4" style="animation-delay: 1.2s;"/>
+          </svg>
+        </div>
+
+        <!-- 5 Stacked cup stage photos -->
+        <div class="absolute inset-0" style="z-index: 2;">
+          <img class="cup-stage" id="cupStage1" src="./images/cup-stage-1-empty.png"    alt="빈 컵"     style="opacity: 1;"/>
+          <img class="cup-stage" id="cupStage2" src="./images/cup-stage-2-veggies.png"  alt="채소 추가" style="opacity: 0;"/>
+          <img class="cup-stage" id="cupStage3" src="./images/cup-stage-3-sauce.png"    alt="양념 추가" style="opacity: 0;"/>
+          <img class="cup-stage" id="cupStage4" src="./images/cup-stage-4-fish.png"     alt="회 추가"   style="opacity: 0;"/>
+          <img class="cup-stage" id="cupStage5" src="./images/cup-stage-5-finished.png" alt="완성"     style="opacity: 0;"/>
+        </div>
+
+        <!-- Sauce surface highlight (stage 3) — follows clip-path fill line -->
+        <div class="liquid-surface" id="liquidSurface"></div>
+
+        <!-- Sparks (stage 5) -->
+        <div class="absolute inset-0 pointer-events-none" id="sparkGroup" style="opacity: 0; z-index: 5;">
+          <div class="spark-dot spark" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+          <div class="spark-dot spark" style="top: 30%; right: 15%; animation-delay: 0.4s;"></div>
+          <div class="spark-dot spark" style="bottom: 30%; left: 10%; animation-delay: 0.8s;"></div>
+          <div class="spark-dot spark" style="bottom: 15%; right: 20%; animation-delay: 1.2s;"></div>
+          <div class="spark-dot spark" style="top: 50%; left: 50%; animation-delay: 0.6s;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 무래씨 reveal (stage 5) — murae-wave with cursor follow -->
+    <div class="absolute" style="right: 4%; bottom: 14%; opacity: 0; transform: translateX(40px) scale(0.6); z-index: 4;" id="muraeReveal">
+      <div id="muraeFollow" style="will-change: transform; transform: translate(0, 0);">
+        <img src="./images/murae-wave.png" alt="무래씨"
+             style="width: clamp(260px, 28vw, 400px); height: auto; object-fit: contain;
+                    filter: drop-shadow(0 24px 60px rgba(0,0,0,0.65));"/>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="absolute bottom-8 left-0 right-0 flex justify-center gap-2 pointer-events-none" style="z-index: 4;">
+      <div class="stage-dot" style="width: 32px; height: 3px; background: #FF3B5C; border-radius: 2px; transition: all 0.4s;"></div>
+      <div class="stage-dot" style="width: 12px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; transition: all 0.4s;"></div>
+      <div class="stage-dot" style="width: 12px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; transition: all 0.4s;"></div>
+      <div class="stage-dot" style="width: 12px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; transition: all 0.4s;"></div>
+      <div class="stage-dot" style="width: 12px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; transition: all 0.4s;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 3 — LIFESTYLE (full bleed photo cards)-->
+<!-- ============================================ -->
+<section id="lifestyle" class="section-pad relative" style="overflow: hidden; background: #0F1115;">
+  <!-- Golden hour bokeh background -->
+  <img src="./images/lifestyle-bg.png" alt=""
+       style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.6;"
+       onerror="this.style.display='none';"/>
+  <!-- Dark overlay for text legibility -->
+  <div style="position: absolute; inset: 0; z-index: 1; pointer-events: none;
+              background: linear-gradient(180deg, rgba(15,17,21,0.78) 0%, rgba(15,17,21,0.65) 50%, rgba(15,17,21,0.85) 100%);"></div>
+
+  <div class="container-x relative" style="z-index: 2;">
+
+    <div class="grid lg:grid-cols-[1fr_2fr] gap-8 items-end mb-16 lg:mb-24 reveal">
+      <div>
+        <p class="eyebrow t-mic mb-3">— 02 / LIFESTYLE</p>
+        <h2 class="lifestyle-display t-h1 text-cream">
+          어디서든,<br/>
+          <span class="font-corm italic font-medium" style="color: var(--red-glow);">무래씨</span>와 함께.
+        </h2>
+      </div>
+      <p class="text-2 lg:pl-12" style="font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: clamp(18px, 1.8vw, 24px); line-height: 1.55; font-weight: 400; letter-spacing: -0.015em;">
+        한 컵에 담긴 풍경은,<br/>
+        포항을 걷는 모든 순간이 됩니다.
+      </p>
+    </div>
+
+    <div class="grid gap-5 md:gap-6" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+
+      <!-- Card 1 — lifestyle-car -->
+      <div class="reveal">
+        <div class="ls-card asset-slot with-image" style="border: none;">
+          <img src="./images/lifestyle-car.png" alt="차 안에서 컵물회"
+               onerror="this.style.display='none'; this.parentElement.classList.remove('with-image'); this.parentElement.classList.add('bg-sim-darkroom');"/>
+          <span class="ls-num">— 01</span>
+          <div class="overlay"></div>
+          <div class="ls-content">
+            <h3 class="t-h2 lifestyle-display mb-2">차 안에서</h3>
+            <p style="font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 15px; line-height: 1.55; opacity: 0.88; font-weight: 400;">운전석 옆 무래씨,<br/>영일대를 지나며.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 — IMG-03 -->
+      <div class="reveal" style="transition-delay: .1s;">
+        <div class="ls-card asset-slot with-image" style="border: none;">
+          <img src="./images/03-lifestyle-market.png" alt="컵물회 산책"
+               onerror="this.style.display='none'; this.parentElement.classList.remove('with-image'); this.parentElement.classList.add('bg-sim-darkroom');"/>
+          <span class="ls-num">— 02</span>
+          <div class="overlay"></div>
+          <div class="ls-content">
+            <h3 class="t-h2 lifestyle-display mb-2">길을 걸으며</h3>
+            <p style="font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 15px; line-height: 1.55; opacity: 0.88; font-weight: 400;">한 손엔 컵,<br/>한 손엔 노을.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 — lifestyle-friends -->
+      <div class="reveal" style="transition-delay: .2s;">
+        <div class="ls-card asset-slot with-image" style="border: none;">
+          <img src="./images/lifestyle-friends.png" alt="친구와 함께"
+               onerror="this.style.display='none'; this.parentElement.classList.remove('with-image'); this.parentElement.classList.add('bg-sim-darkroom');"/>
+          <span class="ls-num">— 03</span>
+          <div class="overlay"></div>
+          <div class="ls-content">
+            <h3 class="t-h2 lifestyle-display mb-2">친구와 함께</h3>
+            <p style="font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 15px; line-height: 1.55; opacity: 0.88; font-weight: 400;">포항이 내어준<br/>한 컵을, 둘이서.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 4 — GOODS                             -->
+<!-- ============================================ -->
+<section id="goods" class="relative section-pad bg-sim-flatlay" style="overflow: hidden;">
+  <div class="absolute inset-0" style="z-index: 0;">
+    <img src="./images/02-cup-finished.png" alt=""
+         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity: 0.18; filter: blur(8px) brightness(0.6) saturate(1.4);"/>
+  </div>
+  <div class="absolute inset-0 pointer-events-none" style="z-index: 1; background: radial-gradient(ellipse at 80% 20%, rgba(229,40,63,0.12) 0%, transparent 50%);"></div>
+
+  <div class="absolute top-1/4 -right-12 pointer-events-none select-none" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(280px, 40vw, 540px); color: rgba(255,255,255,0.025); line-height: 1; font-weight: 500; z-index: 1;">
+    05
+  </div>
+
+  <div class="container-x relative" style="z-index: 2;">
+    <div class="mb-16 lg:mb-20 reveal max-w-3xl">
+      <p class="eyebrow t-mic mb-3">— 03 / GOODS</p>
+      <h2 class="lifestyle-display t-h1 text-cream">
+        한 컵에 담긴,<br/>
+        <span class="font-corm italic font-medium" style="color: var(--red-glow);">다섯 가지</span> 풍경.
+      </h2>
+      <p class="t-body-lg mt-6 max-w-md text-2">
+        9,000원에 들어있는 다섯 가지의 디테일.
+        하나하나가 무래씨의 인사입니다.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center reveal">
+      <div class="relative">
+        <div class="asset-slot with-image relative mx-auto" style="aspect-ratio: 4/5; max-width: 624px;">
+          <img src="./images/02-cup-finished.png" alt="컵물회"
+               style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 50px 100px rgba(229,40,63,0.35));"/>
+        </div>
+
+        <!-- Floating keychain (top-left) -->
+        <div class="absolute -top-4 -left-4 lg:top-2 lg:-left-16 float-slow" style="z-index: 3;">
+          <img src="./images/goods-keychain.png" alt="무래씨 키링"
+               style="width: clamp(121px, 15.4vw, 198px); height: auto; object-fit: contain;
+                      filter: drop-shadow(0 18px 40px rgba(0,0,0,0.55)) drop-shadow(0 0 30px rgba(255,59,92,0.18));
+                      transform: rotate(-8deg);"/>
+        </div>
+
+        <!-- Floating sticker (bottom-right) -->
+        <div class="absolute -bottom-4 -right-4 lg:bottom-4 lg:-right-16 float-slow" style="z-index: 3; animation-delay: 1.2s;">
+          <img src="./images/goods-sticker.png" alt="무래씨 스티커"
+               style="width: clamp(143px, 17.6vw, 231px); height: auto; object-fit: contain;
+                      filter: drop-shadow(0 18px 40px rgba(0,0,0,0.55)) drop-shadow(0 0 30px rgba(255,59,92,0.18));
+                      transform: rotate(6deg);"/>
+        </div>
+
+        <!-- Floating cup holder (top-right) -->
+        <div class="absolute -top-4 -right-4 lg:top-10 lg:-right-4 float-slow" style="z-index: 3; animation-delay: 0.6s;">
+          <img src="./images/goods-cup-holder.png" alt="무래씨 컵 홀더"
+               style="width: clamp(180px, 22.2vw, 294px); height: auto; object-fit: contain;
+                      filter: drop-shadow(0 18px 40px rgba(0,0,0,0.55)) drop-shadow(0 0 30px rgba(255,59,92,0.18));
+                      transform: rotate(10deg);"/>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <div class="annot-card"><span class="num">— 01</span><span class="label">컵</span><span class="desc">한정판 넘버링 No.0001~500</span></div>
+        <div class="annot-card"><span class="num">— 02</span><span class="label">컵 홀더</span><span class="desc">펼치면 영일대 산책 가이드맵</span></div>
+        <div class="annot-card"><span class="num">— 03</span><span class="label">뚜껑 라벨</span><span class="desc">"흔들지 마세요, 무래씨가 슬퍼해요"</span></div>
+        <div class="annot-card"><span class="num">— 04</span><span class="label">동봉 스티커</span><span class="desc">당신의 노트북에도 포항 한 조각</span></div>
+        <div class="annot-card"><span class="num">— 05</span><span class="label">무래씨 키링</span><span class="desc">SNS 인증 시 한정 증정</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 5 — LOCATION                          -->
+<!-- ============================================ -->
+<section id="location" class="relative section-pad" style="min-height: 100vh; overflow: hidden;">
+  <div class="absolute inset-0" style="z-index: 0;">
+    <img src="./images/01-yeongildae-ocean.png" alt="영일대 풍경"
+         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"/>
+  </div>
+  <div class="absolute inset-0" style="z-index: 1; background: linear-gradient(135deg, rgba(10,11,14,0.85) 0%, rgba(10,11,14,0.4) 50%, rgba(229,40,63,0.25) 100%);"></div>
+
+  <div class="container-x relative" style="z-index: 2;">
+    <div class="mb-16 reveal">
+      <p class="eyebrow t-mic mb-3">— 04 / LOCATION</p>
+      <h2 class="lifestyle-display t-h1 text-cream max-w-3xl">
+        오늘, 영일대에서<br/>
+        <span class="font-corm italic font-medium" style="color: var(--red-glow);">무래씨</span>를 만나러 오세요.
+      </h2>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-[1.5fr_1fr] reveal">
+      <!-- LEFT: Map illustration (image fallback supported) -->
+      <div class="glass-card relative overflow-hidden" style="aspect-ratio: 4/3; padding: 0;">
+        <!-- User-provided map screenshot (auto-shows if file exists) -->
+        <img src="./images/map-snapshot.png" alt="설머리 횟집 지도"
+             style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2;"
+             onerror="this.style.display='none';"/>
+
+        <!-- Stylized SVG map (default fallback) -->
+        <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice"
+             style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;">
+          <defs>
+            <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0E2536"/>
+              <stop offset="100%" stop-color="#1A3A4A"/>
+            </linearGradient>
+            <linearGradient id="landGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1A1F26"/>
+              <stop offset="100%" stop-color="#0F1318"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Sea background -->
+          <rect width="600" height="450" fill="url(#seaGrad)"/>
+
+          <!-- Subtle wave patterns -->
+          <g opacity="0.08" stroke="#fff" stroke-width="0.6" fill="none">
+            <path d="M 0 80 Q 100 60 200 80 T 400 80 T 600 80"/>
+            <path d="M 0 140 Q 100 120 200 140 T 400 140 T 600 140"/>
+            <path d="M 0 220 Q 100 200 200 220 T 400 220 T 600 220"/>
+            <path d="M 0 300 Q 100 280 200 300 T 400 300 T 600 300"/>
+            <path d="M 0 380 Q 100 360 200 380 T 400 380 T 600 380"/>
+          </g>
+
+          <!-- Land mass (right portion, with coastline curve) -->
+          <path d="M 600 0 L 600 450 L 380 450
+                   Q 360 380 350 320
+                   Q 345 280 360 240
+                   Q 380 200 400 170
+                   Q 420 130 440 90
+                   Q 460 50 490 25
+                   Q 520 5 600 0 Z"
+                fill="url(#landGrad)" stroke="#3A4954" stroke-width="0.8"/>
+
+          <!-- Coastline accent (dotted) -->
+          <path d="M 380 450 Q 360 380 350 320 Q 345 280 360 240 Q 380 200 400 170 Q 420 130 440 90 Q 460 50 490 25"
+                stroke="#FFB347" stroke-width="1.2" stroke-dasharray="3 4" fill="none" opacity="0.45"/>
+
+          <!-- Streets / paths on land -->
+          <g stroke="rgba(255,255,255,0.08)" stroke-width="0.8" fill="none">
+            <path d="M 380 320 L 540 280"/>
+            <path d="M 400 250 L 560 200"/>
+            <path d="M 430 180 L 570 130"/>
+            <path d="M 380 380 L 480 410"/>
+            <path d="M 460 100 L 540 60"/>
+          </g>
+
+          <!-- 영일대해수욕장 label -->
+          <text x="160" y="200" fill="rgba(255,255,255,0.4)" font-size="10" font-family="Pretendard Variable, sans-serif" font-weight="500" letter-spacing="0.05em">YEONGILDAE BEACH</text>
+          <text x="160" y="216" fill="rgba(255,255,255,0.55)" font-size="11" font-family="Pretendard Variable, sans-serif" font-weight="600">영일대해수욕장</text>
+
+          <!-- 영일대 정자 marker -->
+          <g transform="translate(310, 290)">
+            <circle r="3.5" fill="#fff" opacity="0.85"/>
+            <circle r="6" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.4"/>
+            <text x="10" y="4" fill="rgba(255,255,255,0.7)" font-size="11" font-family="Pretendard Variable, sans-serif" font-weight="500">영일대</text>
+          </g>
+
+          <!-- 죽도시장 label (south) -->
+          <text x="450" y="430" fill="rgba(255,255,255,0.4)" font-size="10" font-family="Pretendard Variable, sans-serif" letter-spacing="0.05em">JUKDO MARKET</text>
+
+          <!-- 설머리 횟집 main pin (animated pulse) -->
+          <g transform="translate(440, 200)">
+            <!-- Pulse rings -->
+            <circle r="22" fill="#FF3B5C" opacity="0.18">
+              <animate attributeName="r" values="14;30;14" dur="2.4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.32;0;0.32" dur="2.4s" repeatCount="indefinite"/>
+            </circle>
+            <circle r="14" fill="#FF3B5C" opacity="0.28"/>
+            <!-- Pin shape -->
+            <path d="M 0 -24 C -11 -24, -18 -16, -18 -7 C -18 5, -9 18, 0 30 C 9 18, 18 5, 18 -7 C 18 -16, 11 -24, 0 -24 Z"
+                  fill="#E5283F" stroke="#fff" stroke-width="1.5"/>
+            <circle r="5.5" cy="-7" fill="#fff"/>
+            <!-- Label -->
+            <rect x="-58" y="38" width="116" height="42" rx="6" fill="rgba(15,17,21,0.92)" stroke="#FF3B5C" stroke-width="1"/>
+            <text y="56" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Pretendard Variable, sans-serif" letter-spacing="-0.02em">설머리 횟집</text>
+            <text y="72" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10" font-family="Pretendard Variable, sans-serif">영일대본점</text>
+          </g>
+
+          <!-- Compass -->
+          <g transform="translate(548, 50)" opacity="0.55">
+            <text text-anchor="middle" y="-10" fill="#fff" font-size="11" font-weight="700" font-family="Pretendard Variable, sans-serif">N</text>
+            <line x1="0" y1="-5" x2="0" y2="14" stroke="#fff" stroke-width="1"/>
+            <polygon points="0,-5 -4,3 0,1 4,3" fill="#fff"/>
+          </g>
+
+          <!-- Scale bar -->
+          <g transform="translate(40, 415)" opacity="0.5">
+            <line x1="0" y1="0" x2="80" y2="0" stroke="#fff" stroke-width="1.2"/>
+            <line x1="0" y1="-4" x2="0" y2="4" stroke="#fff" stroke-width="1.2"/>
+            <line x1="40" y1="-3" x2="40" y2="3" stroke="#fff" stroke-width="1"/>
+            <line x1="80" y1="-4" x2="80" y2="4" stroke="#fff" stroke-width="1.2"/>
+            <text x="40" y="-8" text-anchor="middle" fill="#fff" font-size="10" font-family="Pretendard Variable, sans-serif">200m</text>
+          </g>
+        </svg>
+
+      </div>
+
+      <!-- RIGHT: Info card -->
+      <div class="glass-card p-7 flex flex-col gap-5">
+        <div>
+          <p class="eyebrow t-mic mb-2">SHOP</p>
+          <h3 class="lifestyle-display text-cream" style="font-size: 24px; font-weight: 700; margin-bottom: 2px;">설머리 횟집</h3>
+          <p class="font-corm italic text-2" style="font-size: 15px;">영일대본점</p>
+        </div>
+
+        <div class="space-y-4 t-body" style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 18px;">
+          <div class="flex gap-3 items-start">
+            <span class="text-red-glow mt-1" style="font-family:'JetBrains Mono', ui-monospace, monospace; font-size: 11px; min-width: 36px; letter-spacing: 0.12em; font-weight: 700;">ADR</span>
+            <div>
+              <span class="text-2 block">경북 포항시 북구 해안로 243-2</span>
+              <span class="t-cap text-mute block" style="margin-top: 2px;">(지번) 두호동 73</span>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="text-red-glow mt-1" style="font-family:'JetBrains Mono', ui-monospace, monospace; font-size: 11px; min-width: 36px; letter-spacing: 0.12em; font-weight: 700;">HRS</span>
+            <div>
+              <span class="text-2 block">매일 11:00 — 21:30</span>
+              <span class="t-cap text-mute block" style="margin-top: 2px;">라스트오더 20:30</span>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="text-red-glow mt-1" style="font-family:'JetBrains Mono', ui-monospace, monospace; font-size: 11px; min-width: 36px; letter-spacing: 0.12em; font-weight: 700;">TEL</span>
+            <a href="tel:054-251-9319" class="text-2"
+               style="text-decoration: none; transition: color 0.2s;"
+               onmouseover="this.style.color='#FF3B5C'"
+               onmouseout="this.style.color=''">054-251-9319</a>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="text-red-glow mt-1" style="font-family:'JetBrains Mono', ui-monospace, monospace; font-size: 11px; min-width: 36px; letter-spacing: 0.12em; font-weight: 700;">WAY</span>
+            <div class="flex flex-col gap-1.5">
+              <span class="text-2"><strong style="color:#fff; font-weight: 600;">도보</strong> · 영일대해수욕장 5분</span>
+              <span class="text-2"><strong style="color:#fff; font-weight: 600;">차량</strong> · 포항역 약 15분 / 포항IC 약 20분</span>
+              <span class="text-2"><strong style="color:#fff; font-weight: 600;">대중교통</strong> · 시내버스 105·105-1·175 (영일대해수욕장 정류장)</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://map.naver.com/p/entry/place/1281794513" target="_blank" rel="noopener noreferrer"
+           class="btn-glass" style="width: 100%; padding: 13px 20px; font-size: 14px; justify-content: center;">
+          네이버 지도에서 보기 ↗
+        </a>
+
+        <div class="p-5 relative overflow-hidden shine-overlay" style="background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%); border-radius: 4px;">
+          <p class="font-corm italic t-mic mb-2" style="color: rgba(255,255,255,0.85); letter-spacing: 0.2em;">— POP-UP EVENT</p>
+          <p class="lifestyle-display text-cream mb-1" style="font-size: 24px; font-weight: 700;">2026.06.07 (토)</p>
+          <p class="t-cap" style="color: rgba(255,255,255,0.85);">14:00 — 17:00 · <strong>50컵 한정</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION 6 — CTA + FOOTER                      -->
+<!-- ============================================ -->
+<section id="cta" class="relative section-pad bg-sim-sunset" style="overflow: hidden;">
+  <div class="absolute inset-0" style="z-index: 0;">
+    <img src="./images/01-yeongildae-ocean.png" alt=""
+         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity: 0.6; filter: saturate(1.4) brightness(0.8) hue-rotate(-15deg);"/>
+  </div>
+  <div class="absolute inset-0" style="z-index: 1; background: linear-gradient(180deg, rgba(15,17,21,0.4) 0%, rgba(229,40,63,0.45) 50%, rgba(15,17,21,0.85) 100%);"></div>
+
+  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(160px, 22vw, 320px); color: rgba(255,255,255,0.06); line-height: 1; font-weight: 500; white-space: nowrap; z-index: 1;">
+    See you soon
+  </div>
+
+  <div class="container-x relative" style="z-index: 2;">
+    <div class="text-center mb-14 reveal">
+      <div class="inline-block float-slow mb-8">
+        <img src="./images/murae-laughing.png" alt="무래씨"
+             style="width: 180px; height: auto; object-fit: contain;
+                    filter: drop-shadow(0 16px 40px rgba(0,0,0,0.45));"/>
+      </div>
+      <p class="eyebrow t-mic mb-4">— 05 / SIGNUP  ·  STAY IN TOUCH</p>
+      <h2 class="lifestyle-display t-h1 mb-4 text-cream">
+        팝업 일정이 잡히면,<br/>
+        <span class="font-corm italic font-medium" style="color: var(--red-glow);">가장 먼저</span> 알려드릴게요.
+      </h2>
+      <p class="t-body-lg text-2">스팸 No. 무래씨 소식만 가끔 보내드립니다.</p>
+    </div>
+
+    <div class="grid gap-5 lg:grid-cols-2 max-w-3xl mx-auto reveal">
+      <div class="glass-card-light p-7 flex flex-col justify-between gap-5">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FF3B5C" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#FF3B5C"/>
+            </svg>
+            <p class="eyebrow t-mic">INSTAGRAM</p>
+          </div>
+          <h3 class="t-h3 m-0 mb-2 lifestyle-display text-cream">@mulhwe_</h3>
+          <p class="t-body text-2">팔로우하고<br/>무래씨의 일상을 받아보세요.</p>
+        </div>
+        <a href="https://www.instagram.com/mulhwe_/" target="_blank" rel="noopener noreferrer" class="btn-red" style="width: 100%;">팔로우하기 →</a>
+      </div>
+
+      <div class="glass-card-light p-7 flex flex-col justify-between gap-5">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FF3B5C" stroke-width="2">
+              <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
+            </svg>
+            <p class="eyebrow t-mic">EMAIL</p>
+          </div>
+          <h3 class="t-h3 m-0 mb-2 lifestyle-display text-cream">사전 알림 신청</h3>
+          <p class="t-body text-2 mb-3">팝업 일정 · 신메뉴 소식을<br/>가장 먼저 받아보기.</p>
+        </div>
+        <form class="space-y-3" onsubmit="event.preventDefault(); alert('프로토타입에서는 실제 전송이 안 돼요. Formspree/Resend 연결 필요.');">
+          <input type="email" required placeholder="이메일 주소" class="input-glass" />
+          <button type="submit" class="btn-red w-full">알림 신청</button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="text-center mt-28 pt-10" style="border-top: 1px solid rgba(255,255,255,0.15);">
+      <p class="font-corm italic mb-4 text-cream" style="font-size: 22px; letter-spacing: 0.04em;">Murae-ssi · Pohang Mulhoe</p>
+      <p class="t-cap text-2 mb-1">한동대학교 콘텐츠 창업과 브랜딩 수업 프로젝트</p>
+      <p class="t-cap text-2 mb-1">포항 영일대 설머리 횟집과 함께 만듭니다</p>
+      <div class="flex items-center justify-center gap-4 mt-5 mb-2 t-cap" style="opacity: 0.7;">
+        <a href="./privacy.html" class="text-2" style="text-decoration: none; transition: color 0.2s;"
+           onmouseover="this.style.color='#FF3B5C'" onmouseout="this.style.color=''">개인정보 처리방침</a>
+        <span class="text-mute" aria-hidden="true">·</span>
+        <a href="./terms.html" class="text-2" style="text-decoration: none; transition: color 0.2s;"
+           onmouseover="this.style.color='#FF3B5C'" onmouseout="this.style.color=''">이용약관</a>
+        <span class="text-mute" aria-hidden="true">·</span>
+        <a href="mailto:hello@murae.kr" class="text-2" style="text-decoration: none; transition: color 0.2s;"
+           onmouseover="this.style.color='#FF3B5C'" onmouseout="this.style.color=''">문의</a>
+      </div>
+      <p class="t-mic text-mute mt-4">© 2026 무래씨 프로젝트 팀</p>
+    </footer>
+  </div>
+</section>
+
+<!-- Floating section navigation (desktop only) -->
+<nav class="floating-nav" id="floatingNav" aria-label="섹션 네비게이션">
+  <a href="#hero"      class="nav-dot active" data-label="00 · 인트로"><span class="nav-dot-circle"></span></a>
+  <a href="#cupStory"  class="nav-dot" data-label="01 · 컵 스토리"><span class="nav-dot-circle"></span></a>
+  <a href="#lifestyle" class="nav-dot" data-label="02 · 라이프스타일"><span class="nav-dot-circle"></span></a>
+  <a href="#goods"     class="nav-dot" data-label="03 · 굿즈"><span class="nav-dot-circle"></span></a>
+  <a href="#location"  class="nav-dot" data-label="04 · 찾아오시는 길"><span class="nav-dot-circle"></span></a>
+  <a href="#cta"       class="nav-dot" data-label="05 · 알림 신청"><span class="nav-dot-circle"></span></a>
+</nav>
+
+<button class="back-to-top" id="backToTop" aria-label="맨 위로 이동" type="button">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="19" x2="12" y2="5"/>
+    <polyline points="5 12 12 5 19 12"/>
+  </svg>
+</button>
+
+<div class="proto-banner" onclick="document.getElementById('protoInfo').style.display='flex'">
+  <span>v0.9</span>
+  Prototype Info
+</div>
+<div id="protoInfo" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:10000; align-items:center; justify-content:center; padding:24px;" onclick="this.style.display='none'">
+  <div onclick="event.stopPropagation()" style="max-width:560px; background:white; padding:32px; border-radius:8px; color: var(--ink);">
+    <h3 class="t-h2 mb-4 font-serif-kr">Prototype v0.9</h3>
+    <p class="t-body-lg mb-4" style="color: #5C5C5C;">변경점:</p>
+    <ul class="t-cap space-y-2 mb-6" style="color: #5C5C5C;">
+      <li>• <strong>v0.9</strong>: dev placeholder 태그 전수 제거 / Hero 타이틀·OG 메타 정식 카피로 교체 / Hero 상단 마스코트·워드마크 축소 + Instagram 핸들 노출 / 한글 본문 Cormorant italic 정리 (Pretendard 통일) / 섹션 번호 00–05 통일 / Location WAY 차량·대중교통 추가 / 푸터 개인정보·이용약관 링크 + 별도 페이지 신규 / 위로 이동 버튼 추가</li>
+      <li>• <strong>v0.8</strong>: Stage 3 양념 영상 제거 → clip-path 기반 액체 차오름 애니메이션 / 굿즈 컵 홀더 floating 추가 / 키링·스티커·히어로 컵 크기 조정</li>
+      <li>• <strong>v0.7</strong>: Hero 좌측 텍스트 + 우측 컵 이미지 레이아웃 / 워드마크 "Murae-ssi" → 한글 "무래씨" (Noto Serif KR Bold 52px) / 캐릭터 + 텍스트 2배 / 영상 자산 태그 제거</li>
+      <li>• <strong>v0.6</strong>: 설미도 → 설머리 일괄 교체 / 네이버 지도 iframe + 실제 주소·전화·영업시간</li>
+      <li>• <strong>v0.5</strong>: 양념 영상 1.5배속·재배치 / 무래씨 커서 follow</li>
+      <li>• 남은 placeholder: 키링, 스티커, 횟집/도마 사진(선택)</li>
+    </ul>
+    <button class="btn-red w-full" onclick="document.getElementById('protoInfo').style.display='none'">닫기</button>
+  </div>
+</div>
+
+<script>
+  const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }}), { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const OV_BLUE   = 'linear-gradient(180deg, rgba(10,30,44,0.86) 0%, rgba(8,16,28,0.92) 100%)';
+  const OV_TEAL   = 'linear-gradient(180deg, rgba(15,52,72,0.78) 0%, rgba(8,18,28,0.90) 100%)';
+  const OV_AMBER  = 'linear-gradient(180deg, rgba(50,28,18,0.82) 0%, rgba(20,12,10,0.93) 100%)';
+  const OV_WARM   = 'linear-gradient(180deg, rgba(78,32,22,0.82) 0%, rgba(22,10,10,0.93) 100%)';
+  const OV_SUNSET = 'linear-gradient(180deg, rgba(180,60,40,0.55) 0%, rgba(60,15,20,0.88) 100%)';
+
+  const stages = [
+    { num:'STAGE 01 / 05', bg:'01', cap:'비어있는 한 컵, 시작은 여기서부터.',
+      cupStage: 1, leftSrc: null,        rightSrc: null,           sY: 0,   steam: 0, mur: 0, lO: 0, rO: 0, glow: 0,    overlay: OV_BLUE   },
+    { num:'STAGE 02 / 05', bg:'02', cap:'포항 앞바다의 회를 받칠, 첫 손길.',
+      cupStage: 2, leftSrc: 'ing-pear',  rightSrc: 'ing-cucumber', sY: 0,   steam: 0, mur: 0, lO: 1, rO: 1, glow: 0.25, overlay: OV_TEAL   },
+    { num:'STAGE 03 / 05', bg:'03', cap:'설머리가 빚어낸, 단 하나의 양념.',
+      cupStage: 3, leftSrc: null,        rightSrc: null,           sY: 320, steam: 0, mur: 0, lO: 0, rO: 0, glow: 0.55, overlay: OV_AMBER  },
+    { num:'STAGE 04 / 05', bg:'04', cap:'그날의 회 위, 고소한 마무리까지.',
+      cupStage: 4, leftSrc: 'ing-fish',  rightSrc: 'ing-garnish',  sY: 0,   steam: 0, mur: 0, lO: 1, rO: 1, glow: 0.7,  overlay: OV_WARM   },
+    { num:'STAGE 05 / 05', bg:'05', cap:'포항의 바다, 한 컵에 담겼습니다.<br/><span style="color: var(--red-glow); font-weight: 600; font-size: 0.82em; letter-spacing: -0.015em;">무래씨가 건네는 9,000원의 풍경.</span>',
+      cupStage: 5, leftSrc: null,        rightSrc: null,           sY: 0,   steam: 1, mur: 1, lO: 0, rO: 0, glow: 1,    overlay: OV_SUNSET }
+  ];
+
+  let isStage5 = false;
+
+  function applyStage(s, idx) {
+    document.getElementById('stageNumber').textContent = s.num;
+    document.getElementById('stageText').innerHTML = s.cap;
+    document.getElementById('stageNumBg').textContent = s.bg;
+    document.getElementById('bgOverlay').style.background = s.overlay;
+
+    for (let i = 1; i <= 5; i++) {
+      // During stage 3 (sauce fill), keep stage 2 (veggies) visible underneath
+      // so the unfilled upper portion still shows the cup with veggies.
+      let targetOpacity;
+      if (idx === 2 && (i === 2 || i === 3)) {
+        targetOpacity = 1;
+      } else {
+        targetOpacity = i === s.cupStage ? 1 : 0;
+      }
+      gsap.to('#cupStage' + i, { opacity: targetOpacity, duration: 0.7, ease: 'power2.inOut' });
+    }
+
+    gsap.to('#steamGroup',     { opacity: s.steam, duration: 0.7 });
+    gsap.to('#sparkGroup',     { opacity: s.steam, duration: 0.6 });
+    gsap.to('#muraeReveal',    { opacity: s.mur, x: s.mur ? 0 : 40, scale: s.mur ? 1 : 0.6, duration: 0.9, ease: 'back.out(1.6)' });
+
+    document.getElementById('cupGlow').style.background =
+      'radial-gradient(circle at center, rgba(255,59,92,' + (s.glow * 0.32) + ') 0%, rgba(255,59,92,' + (s.glow * 0.18) + ') 30%, transparent 70%)';
+
+    if (s.leftSrc)  { document.getElementById('leftIngImg').src  = './images/' + s.leftSrc + '.png'; }
+    if (s.rightSrc) { document.getElementById('rightIngImg').src = './images/' + s.rightSrc + '.png'; }
+    gsap.to('#leftAsset',  { opacity: s.lO, x: s.lO ? 0 : -80, rotation: s.lO ? 0 : -10, duration: 0.8, ease: 'power3.out' });
+    gsap.to('#rightAsset', { opacity: s.rO, x: s.rO ? 0 : 80,  rotation: s.rO ? 0 : 10,  duration: 0.8, ease: 'power3.out' });
+
+    document.querySelectorAll('.stage-dot').forEach((d, i) => {
+      d.style.width = i === idx ? '32px' : '12px';
+      d.style.background = i === idx ? '#FF3B5C' : 'rgba(255,255,255,0.2)';
+    });
+
+    isStage5 = (idx === stages.length - 1);
+  }
+
+  const muraeOuter  = document.getElementById('muraeReveal');
+  const muraeFollow = document.getElementById('muraeFollow');
+  let mfX = 0, mfY = 0;
+  let mfTargetX = 0, mfTargetY = 0;
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isStage5 || !muraeOuter) return;
+    const r = muraeOuter.getBoundingClientRect();
+    const homeCenterX = r.left + r.width / 2 - mfX;
+    const homeCenterY = r.top + r.height / 2 - mfY;
+    let dx = (e.clientX - homeCenterX) * 0.28;
+    let dy = (e.clientY - homeCenterY) * 0.28;
+    dx = Math.max(-220, Math.min(220, dx));
+    dy = Math.max(-180, Math.min(180, dy));
+    mfTargetX = dx;
+    mfTargetY = dy;
+  });
+
+  function animateMuraeFollow() {
+    if (!isStage5) { mfTargetX = 0; mfTargetY = 0; }
+    mfX += (mfTargetX - mfX) * 0.08;
+    mfY += (mfTargetY - mfY) * 0.08;
+    if (muraeFollow) {
+      muraeFollow.style.transform = 'translate(' + mfX.toFixed(1) + 'px, ' + mfY.toFixed(1) + 'px)';
+    }
+    requestAnimationFrame(animateMuraeFollow);
+  }
+  animateMuraeFollow();
+
+  const cupPin        = document.querySelector('.cup-story-pin');
+  const liquidSurface = document.getElementById('liquidSurface');
+
+  function setSauceFill(pct) {
+    if (cupPin) cupPin.style.setProperty('--sauce-fill', pct + '%');
+  }
+
+  ScrollTrigger.create({
+    trigger: '.cup-story-wrap', start: 'top top', end: 'bottom bottom',
+    onUpdate: self => {
+      const total = self.progress * stages.length;
+      const i = Math.min(Math.floor(total), stages.length - 1);
+      const sub = Math.min(Math.max(total - i, 0), 1); // 0..1 within stage
+
+      if (i !== window._st) { window._st = i; applyStage(stages[i], i); }
+
+      // Drive sauce fill via --sauce-fill (100% = empty, 0% = full)
+      let fillPct;
+      if (i < 2)        fillPct = 100;
+      else if (i === 2) fillPct = (1 - sub) * 100; // 100→0 across stage 3
+      else              fillPct = 0;
+      setSauceFill(fillPct);
+
+      if (liquidSurface) {
+        const showSurface = (i === 2 && sub > 0.04 && sub < 0.96);
+        liquidSurface.style.opacity = showSurface ? 1 : 0;
+        liquidSurface.classList.toggle('active', showSurface);
+      }
+    }
+  });
+  applyStage(stages[0], 0);
+  setSauceFill(100);
+
+  const navSectionIds = ['hero', 'cupStory', 'lifestyle', 'goods', 'location', 'cta'];
+  const navDots = document.querySelectorAll('.nav-dot');
+  function updateNavActive() {
+    const midline = window.innerHeight * 0.4;
+    let current = 'hero';
+    for (const id of navSectionIds) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= midline) current = id;
+    }
+    navDots.forEach(dot => {
+      dot.classList.toggle('active', dot.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateNavActive, { passive: true });
+  updateNavActive();
+
+  // === Back-to-top button ===
+  const backToTopBtn = document.getElementById('backToTop');
+  if (backToTopBtn) {
+    const toggleBackToTop = () => {
+      backToTopBtn.classList.toggle('visible', window.scrollY > window.innerHeight * 0.8);
+    };
+    window.addEventListener('scroll', toggleBackToTop, { passive: true });
+    toggleBackToTop();
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+
+</body>
+</html>
