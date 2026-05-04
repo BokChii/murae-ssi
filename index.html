@@ -188,24 +188,23 @@
     .stage5-hint.active { opacity: 1; }
     .stage5-hint p {
       margin: 0;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-weight: 500;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.55);
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: -0.01em;
       animation: hint-pulse 2.6s ease-in-out infinite;
     }
     @keyframes hint-pulse {
-      0%, 100% { opacity: 0.55; transform: translateY(0); }
-      50%      { opacity: 0.95; transform: translateY(-3px); }
+      0%, 100% { opacity: 0.6; transform: translateY(0); }
+      50%      { opacity: 1;   transform: translateY(-3px); }
     }
     .stage5-hint .hint-mobile { display: none; }
     @media (max-width: 768px) {
       .stage5-hint { top: 22%; }
       .stage5-hint .hint-desktop { display: none; }
       .stage5-hint .hint-mobile  { display: block; }
-      .stage5-hint p { font-size: 12px; letter-spacing: 0.18em; }
+      .stage5-hint p { font-size: 13px; }
     }
 
     /* Side ingredient images (transparent PNG) */
@@ -606,8 +605,8 @@
 
     <!-- Stage 5 interaction hint (무래씨 인사하기 안내) -->
     <div class="stage5-hint" id="stage5Hint">
-      <p class="hint-desktop">— Move &amp; meet 무래씨 —</p>
-      <p class="hint-mobile">— Touch &amp; meet 무래씨 —</p>
+      <p class="hint-desktop">마우스를 움직여보세요</p>
+      <p class="hint-mobile">화면을 tap 해보세요</p>
     </div>
 
     <!-- Caption bottom -->
