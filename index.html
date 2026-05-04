@@ -222,17 +222,6 @@
       letter-spacing: -0.05em;
     }
 
-    .proto-banner {
-      position: fixed; bottom: 20px; right: 20px;
-      background: rgba(255,255,255,0.95); color: var(--ink);
-      padding: 11px 18px; border-radius: 999px;
-      font-size: 13px; font-weight: 700;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-      z-index: 1000; display: flex; align-items: center; gap: 12px; cursor: pointer;
-      backdrop-filter: blur(10px);
-    }
-    .proto-banner span { background: var(--red); color: #fff; padding: 3px 9px; border-radius: 999px; font-size: 11px; }
-
     /* === Back-to-top button === */
     .back-to-top {
       position: fixed;
@@ -350,6 +339,71 @@
       z-index: 3;
     }
     @media (min-width: 1024px) { .ls-card { aspect-ratio: 3/4.5; } }
+
+    /* ================================================
+       MOBILE OVERRIDES (≤ 768px)
+       텍스트 겹침 / 요소 충돌 / 가독성 보정
+       ================================================ */
+    @media (max-width: 768px) {
+      /* Hero — content overflow 방지: 컵 이미지·gap 축소 */
+      #hero .container-x { gap: clamp(16px, 3vh, 32px) !important; }
+      #hero img[alt="컵물회"].float-slow {
+        max-width: clamp(200px, 60vw, 320px) !important;
+        margin-top: clamp(8px, 2vh, 24px) !important;
+      }
+      #hero h1 { font-size: clamp(20px, 5.2vw, 28px) !important; line-height: 1.32 !important; }
+      #hero .eyebrow { font-size: 10px !important; letter-spacing: 0.16em !important; }
+      #hero .btn-red, #hero .btn-glass { padding: 13px 22px !important; font-size: 14px !important; }
+
+      /* Cup Story — 좌우 ingredient 컵과 충돌하지 않게 대폭 축소 + 위치 조정 */
+      #cupStory #leftAsset, #cupStory #rightAsset {
+        width: 96px !important; height: 96px !important;
+      }
+      #cupStory .absolute.top-1\/2.left-4 { top: 22% !important; left: 8px !important; }
+      #cupStory .absolute.top-1\/2.right-4 { top: 22% !important; right: 8px !important; }
+
+      /* Cup Story — 중앙 컵 컨테이너 살짝 축소 */
+      #cupStory .relative[style*="aspect-ratio: 3/4"] {
+        width: clamp(240px, 70vw, 360px) !important;
+      }
+
+      /* Cup Story — 거대 stage 배경 숫자 축소 */
+      .stage-num-bg { font-size: clamp(180px, 50vw, 280px) !important; }
+
+      /* Cup Story — 무래씨 stage 5 reveal: 더 작고 화면 하단 중앙 쪽으로 이동
+         GSAP가 #muraeReveal의 transform을 직접 제어하므로 transform 기반 센터링 X.
+         left: calc(50% - half image width)로 좌표 자체를 센터에 맞춤 */
+      #cupStory #muraeReveal { right: auto !important; left: calc(50% - 90px) !important; bottom: 16% !important; }
+      #cupStory #muraeReveal img { max-width: 180px !important; height: auto !important; }
+
+      /* Cup Story — 캡션 위치 보정 (무래씨와 충돌 방지) */
+      #cupStory .absolute.bottom-28 { bottom: 92px !important; }
+      #cupStory .absolute.bottom-28 h2 {
+        font-size: clamp(18px, 4.6vw, 24px) !important; line-height: 1.4 !important;
+      }
+      #cupStory .absolute.top-12 { top: 28px !important; }
+      #cupStory .absolute.top-24 { top: 56px !important; }
+
+      /* Goods — floating 굿즈 3종 mobile 축소 */
+      #goods img[alt="무래씨 키링"]   { width: 88px !important; }
+      #goods img[alt="무래씨 스티커"] { width: 104px !important; }
+      #goods img[alt="무래씨 컵 홀더"] { width: 124px !important; }
+
+      /* Location — 주소 자동 줄바꿈 자연스럽게 */
+      #location .glass-card a, #location .glass-card span,
+      #location .glass-card div { word-break: keep-all; }
+
+      /* CTA 섹션 hero 카피 폰트 축소 */
+      #cta h2 { font-size: clamp(22px, 5.6vw, 30px) !important; line-height: 1.3 !important; }
+    }
+
+    /* 더 좁은 폭 (≤ 380px) — iPhone SE 등 보정 */
+    @media (max-width: 380px) {
+      #hero .flex.items-center.gap-3 img { width: 52px !important; height: 52px !important; }
+      #hero .flex.items-center.gap-3 span { font-size: 26px !important; }
+      #cupStory #leftAsset, #cupStory #rightAsset { width: 76px !important; height: 76px !important; }
+      #goods img[alt="무래씨 컵 홀더"] { width: 108px !important; }
+    }
   </style>
 </head>
 <body>
@@ -1009,25 +1063,6 @@
   </svg>
 </button>
 
-<div class="proto-banner" onclick="document.getElementById('protoInfo').style.display='flex'">
-  <span>v0.9</span>
-  Prototype Info
-</div>
-<div id="protoInfo" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:10000; align-items:center; justify-content:center; padding:24px;" onclick="this.style.display='none'">
-  <div onclick="event.stopPropagation()" style="max-width:560px; background:white; padding:32px; border-radius:8px; color: var(--ink);">
-    <h3 class="t-h2 mb-4 font-serif-kr">Prototype v0.9</h3>
-    <p class="t-body-lg mb-4" style="color: #5C5C5C;">변경점:</p>
-    <ul class="t-cap space-y-2 mb-6" style="color: #5C5C5C;">
-      <li>• <strong>v0.9</strong>: dev placeholder 태그 전수 제거 / Hero 타이틀·OG 메타 정식 카피로 교체 / Hero 상단 마스코트·워드마크 축소 + Instagram 핸들 노출 / 한글 본문 Cormorant italic 정리 (Pretendard 통일) / 섹션 번호 00–05 통일 / Location WAY 차량·대중교통 추가 / 푸터 개인정보·이용약관 링크 + 별도 페이지 신규 / 위로 이동 버튼 추가</li>
-      <li>• <strong>v0.8</strong>: Stage 3 양념 영상 제거 → clip-path 기반 액체 차오름 애니메이션 / 굿즈 컵 홀더 floating 추가 / 키링·스티커·히어로 컵 크기 조정</li>
-      <li>• <strong>v0.7</strong>: Hero 좌측 텍스트 + 우측 컵 이미지 레이아웃 / 워드마크 "Murae-ssi" → 한글 "무래씨" (Noto Serif KR Bold 52px) / 캐릭터 + 텍스트 2배 / 영상 자산 태그 제거</li>
-      <li>• <strong>v0.6</strong>: 설미도 → 설머리 일괄 교체 / 네이버 지도 iframe + 실제 주소·전화·영업시간</li>
-      <li>• <strong>v0.5</strong>: 양념 영상 1.5배속·재배치 / 무래씨 커서 follow</li>
-      <li>• 남은 placeholder: 키링, 스티커, 횟집/도마 사진(선택)</li>
-    </ul>
-    <button class="btn-red w-full" onclick="document.getElementById('protoInfo').style.display='none'">닫기</button>
-  </div>
-</div>
 
 <script>
   const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }}), { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
