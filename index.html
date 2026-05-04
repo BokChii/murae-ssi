@@ -23,6 +23,17 @@
   <meta name="twitter:description" content="포항 영일대 설머리 횟집과 한동대학교가 함께 만드는 컵물회." />
   <meta name="twitter:image" content="./images/02-cup-finished.png" />
 
+  <!-- Preload critical scroll-animation assets (Cup Story 깜빡임 방지) -->
+  <link rel="preload" as="image" href="./images/ing-pear.png" />
+  <link rel="preload" as="image" href="./images/ing-cucumber.png" />
+  <link rel="preload" as="image" href="./images/ing-fish.png" />
+  <link rel="preload" as="image" href="./images/ing-garnish.png" />
+  <link rel="preload" as="image" href="./images/cup-stage-2-veggies.png" />
+  <link rel="preload" as="image" href="./images/cup-stage-3-sauce.png" />
+  <link rel="preload" as="image" href="./images/cup-stage-4-fish.png" />
+  <link rel="preload" as="image" href="./images/cup-stage-5-finished.png" />
+  <link rel="preload" as="image" href="./images/murae-wave.png" />
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -124,7 +135,7 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* Cup story */
-    .cup-story-wrap { position: relative; height: 600vh; }
+    .cup-story-wrap { position: relative; height: 400vh; }
     .cup-story-pin  { position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; }
 
     /* Cup stage images — stacked, crossfaded (transparent PNG, no blend trick needed) */
@@ -162,6 +173,40 @@
     }
     @keyframes liquid-shimmer { 0%,100%{ transform: translateY(-7px) scaleX(1); } 50%{ transform: translateY(-9px) scaleX(0.96); } }
     .liquid-surface.active { animation: liquid-shimmer 1.6s ease-in-out infinite; }
+
+    /* Stage 5 — 무래씨 인터랙션 힌트 */
+    .stage5-hint {
+      position: absolute;
+      left: 0; right: 0;
+      top: 26%;
+      text-align: center;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.9s ease;
+      z-index: 4;
+    }
+    .stage5-hint.active { opacity: 1; }
+    .stage5-hint p {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 500;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      animation: hint-pulse 2.6s ease-in-out infinite;
+    }
+    @keyframes hint-pulse {
+      0%, 100% { opacity: 0.55; transform: translateY(0); }
+      50%      { opacity: 0.95; transform: translateY(-3px); }
+    }
+    .stage5-hint .hint-mobile { display: none; }
+    @media (max-width: 768px) {
+      .stage5-hint { top: 22%; }
+      .stage5-hint .hint-desktop { display: none; }
+      .stage5-hint .hint-mobile  { display: block; }
+      .stage5-hint p { font-size: 12px; letter-spacing: 0.18em; }
+    }
 
     /* Side ingredient images (transparent PNG) */
     .ing-img {
@@ -557,6 +602,12 @@
     <!-- Stage number caption -->
     <div class="absolute top-24 left-0 right-0 px-8 text-center" style="z-index: 4;">
       <p class="font-corm italic" id="stageNumber" style="color: var(--red-glow); font-size: 14px; letter-spacing: 0.18em; font-weight: 500;">STAGE 01 / 05</p>
+    </div>
+
+    <!-- Stage 5 interaction hint (무래씨 인사하기 안내) -->
+    <div class="stage5-hint" id="stage5Hint">
+      <p class="hint-desktop">— Move &amp; meet 무래씨 —</p>
+      <p class="hint-mobile">— Touch &amp; meet 무래씨 —</p>
     </div>
 
     <!-- Caption bottom -->
@@ -1116,8 +1167,18 @@
     document.getElementById('cupGlow').style.background =
       'radial-gradient(circle at center, rgba(255,59,92,' + (s.glow * 0.32) + ') 0%, rgba(255,59,92,' + (s.glow * 0.18) + ') 30%, transparent 70%)';
 
-    if (s.leftSrc)  { document.getElementById('leftIngImg').src  = './images/' + s.leftSrc + '.png'; }
-    if (s.rightSrc) { document.getElementById('rightIngImg').src = './images/' + s.rightSrc + '.png'; }
+    // src 변경 시: 진행 중인 tween 중단 + opacity 0 즉시 적용 → swap → fade in
+    // (이전 stage 이미지가 잠깐 노출되는 깜빡임 방지)
+    if (s.leftSrc) {
+      gsap.killTweensOf('#leftAsset');
+      gsap.set('#leftAsset', { opacity: 0 });
+      document.getElementById('leftIngImg').src = './images/' + s.leftSrc + '.png';
+    }
+    if (s.rightSrc) {
+      gsap.killTweensOf('#rightAsset');
+      gsap.set('#rightAsset', { opacity: 0 });
+      document.getElementById('rightIngImg').src = './images/' + s.rightSrc + '.png';
+    }
     gsap.to('#leftAsset',  { opacity: s.lO, x: s.lO ? 0 : -80, rotation: s.lO ? 0 : -10, duration: 0.8, ease: 'power3.out' });
     gsap.to('#rightAsset', { opacity: s.rO, x: s.rO ? 0 : 80,  rotation: s.rO ? 0 : 10,  duration: 0.8, ease: 'power3.out' });
 
@@ -1127,6 +1188,17 @@
     });
 
     isStage5 = (idx === stages.length - 1);
+
+    // Stage 5 인터랙션 힌트 — 무래씨 등장(0.9s) 직후 페이드 인
+    const stage5Hint = document.getElementById('stage5Hint');
+    if (stage5Hint) {
+      if (window._hintTimer) { clearTimeout(window._hintTimer); window._hintTimer = null; }
+      if (isStage5) {
+        window._hintTimer = setTimeout(() => stage5Hint.classList.add('active'), 700);
+      } else {
+        stage5Hint.classList.remove('active');
+      }
+    }
   }
 
   const muraeOuter  = document.getElementById('muraeReveal');
@@ -1134,18 +1206,31 @@
   let mfX = 0, mfY = 0;
   let mfTargetX = 0, mfTargetY = 0;
 
-  window.addEventListener('mousemove', (e) => {
+  function setMuraeFollowTarget(clientX, clientY) {
     if (!isStage5 || !muraeOuter) return;
     const r = muraeOuter.getBoundingClientRect();
     const homeCenterX = r.left + r.width / 2 - mfX;
     const homeCenterY = r.top + r.height / 2 - mfY;
-    let dx = (e.clientX - homeCenterX) * 0.28;
-    let dy = (e.clientY - homeCenterY) * 0.28;
+    let dx = (clientX - homeCenterX) * 0.28;
+    let dy = (clientY - homeCenterY) * 0.28;
     dx = Math.max(-220, Math.min(220, dx));
     dy = Math.max(-180, Math.min(180, dy));
     mfTargetX = dx;
     mfTargetY = dy;
-  });
+  }
+
+  // Desktop: mouse
+  window.addEventListener('mousemove', (e) => setMuraeFollowTarget(e.clientX, e.clientY));
+
+  // Mobile: touch (drag finger or single tap registers position)
+  window.addEventListener('touchmove', (e) => {
+    const t = e.touches && e.touches[0];
+    if (t) setMuraeFollowTarget(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener('touchstart', (e) => {
+    const t = e.touches && e.touches[0];
+    if (t) setMuraeFollowTarget(t.clientX, t.clientY);
+  }, { passive: true });
 
   function animateMuraeFollow() {
     if (!isStage5) { mfTargetX = 0; mfTargetY = 0; }
